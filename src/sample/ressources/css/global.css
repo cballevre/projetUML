@@ -1,0 +1,155 @@
+/***** Background *****/
+#navBanner {
+    -fx-background-color: #4e5f70;
+}
+
+#logoIcon {
+    -fx-background-color: #374656;
+}
+
+.navOption:hover {
+    -fx-background-color: #3f5060;
+    -fx-cursor: hand;
+}
+
+.menuOption:hover {
+    -fx-background-color: #afc0d4;
+    -fx-cursor: hand;
+}
+
+#menuBanner {
+    -fx-background-color: #d7dde4;
+}
+
+#body {
+    -fx-background-color: #f0f3f6;
+}
+
+#calendarCtn {
+    -fx-background-color: #ffffff;
+}
+
+/***** Font *****/
+#navBanner * {
+    -fx-text-fill: #ffffff;
+}
+
+#menuBanner * {
+    -fx-text-fill: #7e8ea0;
+}
+
+#body * {
+    -fx-text-fill: #4e5f70;
+}
+
+#navBanner *, #menuBanner * {
+    -fx-font-size: 12;
+}
+
+#sectionTitleLbl {
+    -fx-font-size: 16;
+}
+
+/***** ../img *****/
+#dayoffRequestsIcon, #planningIcon, #validateIcon, #reportIcon, #settingIcon, #directoryIcon, #userIcon, #logoIcon {
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+#dayoffRequestsIcon {
+    -fx-background-image: url('../img/paper-plane.png');
+}
+
+#planningIcon {
+    -fx-background-image: url('../img/calendar.png');
+}
+
+#validateIcon {
+    -fx-background-image: url('../img/check.png');
+}
+
+#reportIcon {
+    -fx-background-image: url('../img/chart-bar.png');
+}
+
+#settingIcon {
+    -fx-background-image: url('../img/cog.png');
+}
+
+#directoryIcon {
+    -fx-background-image: url('../img/users.png');
+}
+
+#userIcon {
+    -fx-background-image: url('../img/woman_icon.png');
+}
+
+#logoIcon {
+    -fx-background-image: url('../img/logo.png');
+    -fx-background-size: stretch;
+}
+
+.menuIcons, .navIcons {
+    -fx-width: 12;
+    -fx-height: 12;
+    -fx-min-width: -fx-width;
+    -fx-min-height: -fx-height;
+    -fx-max-width: -fx-width;
+    -fx-max-height: -fx-height;
+}
+
+/***** calendar *****/
+.dayoffMorning {
+    -fx-background-color: linear-gradient(to right, red 0%, red 50%, white 50%, white 100%);
+}
+
+.dayoffAfternoon {
+    -fx-background-color: linear-gradient(to right, white 0%, white 50%, red 50%, red 100%);
+}
+
+.dayoffAllDayLong {
+    -fx-background-color: red;
+}
+
+.currentDay {
+    -fx-background-color: #7e8ea0A0;
+}
+
+/***** unclassified *****/
+.separatorSectionTitle {
+    -fx-border-color: black;
+}
+
+#calendar, #calendar * {
+    -fx-alignment: center;
+}
+
+.navOption {
+    -fx-padding: 10;
+}
+
+.navOption .label {
+    -fx-padding: 0 0 0 10;
+}
+
+.menuOption {
+    -fx-padding: 0 10 0 10;
+}
+
+#directoryIcon {
+    -fx-padding: 5px;
+    -fx-border-insets: 10px;
+    -fx-background-insets: 5px;
+}
+
+#userIcon {
+    -fx-marging: 0 0 0 10;
+}
+
+.selected_option {
+    -fx-background-color: #3f5060;
+}
+
+
+/* https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html */

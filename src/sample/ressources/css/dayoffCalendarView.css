@@ -1,0 +1,13 @@
+#dayoffCalendar {
+    -fx-background-color: rgba(75.9, 49.7, 100, 0.5);
+    -fx-border-color: blue;
+    -fx-border-width: 2;
+    -fx-border-style: segments(10, 15, 15, 15) line-cap round;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+label {
+    -fx-text-fill: white;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
