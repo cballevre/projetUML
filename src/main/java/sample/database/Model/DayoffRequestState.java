@@ -5,12 +5,6 @@ import java.util.*;
 /**
  * 
  */
-public class DayoffRequestState {
-
-    /**
-     * Default constructor
-     */
-    public DayoffRequestState() {
-    }
-
+public enum DayoffRequestState {
+    awaiting, accepted, refused
 }

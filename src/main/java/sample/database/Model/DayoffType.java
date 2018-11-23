@@ -7,9 +7,7 @@ import java.util.*;
  */
 public class DayoffType {
 
-    /**
-     * Default constructor
-     */
+    // TODO: Ajouter les types proposée par rapport à une liste prédéfini
     public DayoffType() {
     }
 

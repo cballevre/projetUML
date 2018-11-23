@@ -5,14 +5,14 @@ public class User {
     /**
      * @id
      */
-    public int id;
-    public String firstname;
-    public String lastname;
-    public String email;
-    public String password;
-    public String service;
-    public Role role;
-    public float holidayBalance;
+    private int id;
+    private String firstname;
+    private String lastname;
+    private String email;
+    private String password;
+    private String service;
+    private Role role;
+    private float holidayBalance;
 
     public User(String firstname, String lastname, String email, String password, String service, Role role, float holidayBalance) {
         this.firstname = firstname;

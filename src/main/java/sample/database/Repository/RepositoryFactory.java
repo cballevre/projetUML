@@ -17,11 +17,12 @@ public class RepositoryFactory {
         return instances.get(classe.getSimpleName()); 
     }
 
-    private static JSONRepository createRepository(Class tClass) {
+    private static RepositoryInterface createRepository(Class tClass) {
 
         switch (tClass.getSimpleName()) {
             case "User":
-                return new JSONRepository<User>(User.class);
+                return new UserRepository() {
+                };
         }
 
 

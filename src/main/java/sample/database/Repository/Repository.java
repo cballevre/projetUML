@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 abstract class Repository<E> implements RepositoryInterface {
 
@@ -70,6 +71,18 @@ abstract class Repository<E> implements RepositoryInterface {
         return null;
     }
 
+    @Override
+    public void create(List entities) {
 
+    }
 
+    @Override
+    public void update(Object entity, int id) {
+
+    }
+
+    @Override
+    public void delete(int id) {
+
+    }
 }
