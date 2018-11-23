@@ -1,0 +1,61 @@
+[
+  {
+    "firstname" : "Célestin",
+    "lastname" : "Ballèvre",
+    "email" : "celestin.ballevre@gmail.com",
+    "password" : "5d41402abc4b2a76b9719d911017c592",
+    "service" : "Informatique",
+    "role" : "teamLeader",
+    "holidayBalance" : 3.5,
+    "dayoff_requests" : [
+      {
+        "type" : "",
+        "day_start" : "",
+        "day_end" : "",
+        "count_days" : "",
+        "reason" : "",
+        "comment" : "",
+        "state" : ""
+      },
+      {
+        "type" : "",
+        "day_start" : "",
+        "day_end" : "",
+        "count_days" : "",
+        "reason" : "",
+        "comment" : "",
+        "state" : ""
+      }
+    ]
+  },
+  {
+    "firstname" : "Simon",
+    "lastname" : "Jourdan",
+    "email" : "simon.jourdan@gmail.com",
+    "password" : "5d41402abc4b2a76b9719d911017c592",
+    "service" : "Informatique",
+    "role" : "employee",
+    "holidayBalance" : 6.5,
+    "dayoff_requests" : [
+      {
+        "type" : "",
+        "day_start" : "",
+        "day_end" : "",
+        "count_days" : "",
+        "reason" : "",
+        "comment" : "",
+        "state" : ""
+      },
+      {
+        "type" : "",
+        "day_start" : "",
+        "day_end" : "",
+        "count_days" : "",
+        "reason" : "",
+        "comment" : "",
+        "state" : ""
+      }
+    ]
+  }
+
+]

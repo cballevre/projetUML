@@ -87,7 +87,7 @@ public class SkeletonController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader();
         Node root = null;
         try {
-            root = fxmlLoader.load(sample.Main.class.getResource("views/"+fxmlList.get(fxml)+".fxml"));
+            root = fxmlLoader.load(sample.Main.class.getResource("views/" +fxmlList.get(fxml)+".fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }

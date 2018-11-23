@@ -147,7 +147,7 @@
       </GridPane>
    </children>
    <stylesheets>
-      <URL value="@../ressources/css/dayoffCalendarView.css" />
-      <URL value="@../ressources/css/global.css" />
+      <URL value="@../../sample/css/dayoffCalendarView.css" />
+      <URL value="@../../sample/css/global.css" />
    </stylesheets>
 </AnchorPane>
