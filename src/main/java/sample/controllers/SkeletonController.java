@@ -43,6 +43,7 @@ public class SkeletonController implements Initializable {
         navOption3.setVisible(false);
         navOption4.setVisible(false);
         navOption5.setVisible(false);
+        menuOption1.setVisible(false);
 
         switch (currentUser.getRole()) {
             case employee:
@@ -138,6 +139,7 @@ public class SkeletonController implements Initializable {
     }
 
     private void menuRHStaff() {
+        menuOption1.setVisible(true);
         navOption3.setVisible(true);
         navOption4.setVisible(true);
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
@@ -12,10 +13,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<?import java.net.URL?>
 <GridPane hgap="3" vgap="1" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.LoginController">
     <children>
-        <ImageView id="login-logo" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" style="-fx-background-size: cover; -fx-background-position: center center;">
+        <ImageView id="login-logo" pickOnBounds="true" preserveRatio="true" style="-fx-background-size: cover; -fx-background-position: center center;" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0">
             <image>
                 <Image url="@../img/bg.jpg" />
             </image>
@@ -23,7 +23,7 @@
         <VBox depthTest="DISABLE" prefWidth="350.0" style="-fx-background-color: #FFFFFF;" GridPane.columnIndex="3" GridPane.rowIndex="0">
             <padding><Insets bottom="25" left="25" right="25" top="60" /></padding>
             <children>
-                <HBox alignment="TOP_CENTER" VBox.vgrow="NEVER" prefHeight="120.0">
+                <HBox alignment="TOP_CENTER" prefHeight="120.0" VBox.vgrow="NEVER">
                     <children>
                         <ImageView id="logo" preserveRatio="true">
                             <image>
@@ -32,8 +32,8 @@
                         </ImageView>
                     </children>
                 </HBox>
-                <TextField fx:id="email" />
-                <PasswordField fx:id="password" />
+                <TextField fx:id="email" text="celestin.ballevre@gmail.com" />
+                <PasswordField fx:id="password" text="test" />
                 <Button fx:id="loginBtn" mnemonicParsing="false" text="Se connecter" />
             </children>
         </VBox>
@@ -41,4 +41,13 @@
     <stylesheets>
         <URL value="@../css/global.css" />
     </stylesheets>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
 </GridPane>

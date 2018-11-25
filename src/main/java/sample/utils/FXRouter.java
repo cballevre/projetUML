@@ -209,14 +209,8 @@ public final class FXRouter {
 
         // set window title from route settings or default setting
         window.setTitle(route.windowTitle);
+
         // set new route scene
-
-        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-        System.out.println(primaryScreenBounds.getWidth());
-        System.out.println(primaryScreenBounds.getHeight());
-
-
-
         window.setScene(new Scene(resource, route.sceneWidth, route.sceneHeight));
         // show the window
         window.show();

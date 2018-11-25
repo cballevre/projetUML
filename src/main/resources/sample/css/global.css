@@ -58,31 +58,31 @@
 }
 
 #dayoffRequestsIcon {
-    -fx-background-image: url('sample/img/paper-plane.png');
+    -fx-background-image: url('../img/paper-plane.png');
 }
 
 #planningIcon {
-    -fx-background-image: url('sample/img/calendar.png');
+    -fx-background-image: url('../img/calendar.png');
 }
 
 #validateIcon {
-    -fx-background-image: url('sample/img/check.png');
+    -fx-background-image: url('../img/check.png');
 }
 
 #reportIcon {
-    -fx-background-image: url('sample/img/chart-bar.png');
+    -fx-background-image: url('../img/chart-bar.png');
 }
 
 #settingIcon {
-    -fx-background-image: url('sample/img/cog.png');
+    -fx-background-image: url('../img/cog.png');
 }
 
 #directoryIcon {
-    -fx-background-image: url('sample/img/users.png');
+    -fx-background-image: url('../img/users.png');
 }
 
 #userIcon {
-    -fx-background-image: url('sample/img/woman_icon.png');
+    -fx-background-image: url('../img/woman_icon.png');
     -fx-background-size: 16;
     -fx-background-color: #d6dd88;
     -fx-background-radius: 100%;
@@ -95,8 +95,8 @@
 }
 
 #logoIcon {
-    -fx-background-image: url('sample/img/logo.png');
-    -fx-background-size: stretch;
+    -fx-background-image: url('../img/logo.png');
+    -fx-background-size: contain;
 }
 
 .menuIcons, .navIcons {
@@ -241,7 +241,7 @@
 }
 
 .selected_option {
-    -fx-background-color: #6e7cad;
+    -fx-background-color: #009EE3;
 }
 
 
