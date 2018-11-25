@@ -4,8 +4,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
+<?import javafx.scene.layout.VBox?>
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.PlanningController">
    <children>
-      <Label text="Content of planning view" />
+      <VBox AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+         <children>
+            <fx:include source="calendarView2.fxml" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

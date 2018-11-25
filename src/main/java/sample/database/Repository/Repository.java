@@ -8,12 +8,15 @@ import sample.utils.StringUtils;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class Repository<E> implements RepositoryInterface {
+abstract class Repository<E> {
+
+    private final String LOG_TAG = Repository.class.getSimpleName();
 
     private ArrayList<E> data;
     private Class entity;
@@ -22,7 +25,7 @@ abstract class Repository<E> implements RepositoryInterface {
     private String entityPrimaryKey;
     private Type listType = new TypeToken<ArrayList<User>>(){}.getType();
 
-    public Repository(Class tClass) {
+    Repository(Class tClass) {
 
         this.entity = tClass;
         this.entityName = entity.getSimpleName();
@@ -57,32 +60,55 @@ abstract class Repository<E> implements RepositoryInterface {
     }
 
     public ArrayList<E> findBy(String type, Object value) {
+
         ArrayList<E> result = new ArrayList<>();
 
         String methodName = "get" + StringUtils.ucfirst(type); // fieldName String
-        System.out.println(methodName);
-
         Method m = null;
-        /* try {
-            //m = this.e.getMethod(methodName);
-        } catch (NoSuchMethodException nsme) {
-            nsme.printStackTrace();
-        }*/
-        return null;
+
+        try {
+            m = entity.getMethod(methodName);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+
+        for (E item: data) {
+            Object currentValue = null;
+            try {
+                currentValue = m.invoke(item);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+            if(value.equals(currentValue)) {
+                result.add(item);
+            }
+        }
+
+        return result;
     }
 
-    @Override
-    public void create(List entities) {
+    public void create(ArrayList<E> entities) {
 
     }
 
-    @Override
+    public void create(E entity) {
+
+    }
+
     public void update(Object entity, int id) {
 
     }
 
-    @Override
     public void delete(int id) {
+
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("c'est fini pour moi veuillez m'enregistrer avant de me supprimer");
+        super.finalize();
 
     }
 }

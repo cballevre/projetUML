@@ -25,7 +25,7 @@
     -fx-background-color: #f0f3f6;
 }
 
-#calendarCtn {
+#planningCtn, #calendarCtn {
     -fx-background-color: #ffffff;
 }
 
@@ -34,15 +34,15 @@
     -fx-text-fill: #ffffff;
 }
 
-#menuBanner * {
+#menuBanner .label {
     -fx-text-fill: #7e8ea0;
 }
 
-#body * {
+#body {
     -fx-text-fill: #4e5f70;
 }
 
-#navBanner *, #menuBanner * {
+#navBanner .label, #menuBanner .label, #body .label {
     -fx-font-size: 12;
 }
 
@@ -50,7 +50,7 @@
     -fx-font-size: 16;
 }
 
-/***** ../img *****/
+/***** Pictures *****/
 #dayoffRequestsIcon, #planningIcon, #validateIcon, #reportIcon, #settingIcon, #directoryIcon, #userIcon, #logoIcon {
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
@@ -58,35 +58,44 @@
 }
 
 #dayoffRequestsIcon {
-    -fx-background-image: url('../img/paper-plane.png');
+    -fx-background-image: url('sample/img/paper-plane.png');
 }
 
 #planningIcon {
-    -fx-background-image: url('../img/calendar.png');
+    -fx-background-image: url('sample/img/calendar.png');
 }
 
 #validateIcon {
-    -fx-background-image: url('../img/check.png');
+    -fx-background-image: url('sample/img/check.png');
 }
 
 #reportIcon {
-    -fx-background-image: url('../img/chart-bar.png');
+    -fx-background-image: url('sample/img/chart-bar.png');
 }
 
 #settingIcon {
-    -fx-background-image: url('../img/cog.png');
+    -fx-background-image: url('sample/img/cog.png');
 }
 
 #directoryIcon {
-    -fx-background-image: url('../img/users.png');
+    -fx-background-image: url('sample/img/users.png');
 }
 
 #userIcon {
-    -fx-background-image: url('../img/woman_icon.png');
+    -fx-background-image: url('sample/img/woman_icon.png');
+    -fx-background-size: 16;
+    -fx-background-color: #d6dd88;
+    -fx-background-radius: 100%;
+    -fx-width: 25;
+    -fx-height: -fx-width;
+    -fx-min-width: -fx-width;
+    -fx-min-height: -fx-height;
+    -fx-max-width: -fx-width;
+    -fx-max-height: -fx-height;
 }
 
 #logoIcon {
-    -fx-background-image: url('../img/logo.png');
+    -fx-background-image: url('sample/img/logo.png');
     -fx-background-size: stretch;
 }
 
@@ -99,30 +108,114 @@
     -fx-max-height: -fx-height;
 }
 
+/***** calendar & planning *****/
+#planning .holiday, #calendar .holiday {
+    -fx-background-color: #d2d2d2;
+}
+#planning .holiday .label, #calendar .holiday .label {
+    -fx-text-fill: white;
+}
+
+#planning .workday, #calendar .workday {
+    -fx-background-color: #edf5fa;
+}
+
+#planning .dayoffMorning, #calendar .dayoffMorning {
+    -fx-background-color: linear-gradient(to right, #26a462 0%, #26a462 50%, #edf5fa 50%, #edf5fa 100%);
+}
+
+#planning .dayoffAfternoon, #calendar .dayoffAfternoon {
+    -fx-background-color: linear-gradient(to right, #edf5fa 0%, #edf5fa 50%, #26a462 50%, #26a462 100%);
+}
+
+#planning .dayoffAllDayLong, #calendar .dayoffAllDayLong {
+    -fx-background-color: #26a462;
+}
+
 /***** calendar *****/
-.dayoffMorning {
-    -fx-background-color: linear-gradient(to right, red 0%, red 50%, white 50%, white 100%);
+#calendar .label {
+    -fx-alignment: center;
 }
 
-.dayoffAfternoon {
-    -fx-background-color: linear-gradient(to right, white 0%, white 50%, red 50%, red 100%);
+#calendar .month {
+    -fx-font-weight: bold;
 }
 
-.dayoffAllDayLong {
-    -fx-background-color: red;
+#calendar .week {
+    -fx-border-color: #b9b9b9;
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 1 0;
+    -fx-font-weight: bold;
 }
 
-.currentDay {
-    -fx-background-color: #7e8ea0A0;
+#calendar .cell {
+    -fx-border-color: #b9b9b9;
+    -fx-border-style: solid;
+    -fx-border-width: 0 1 1 0;
+}
+
+#calendar .firstColumn {
+    -fx-border-color: #b9b9b9;
+    -fx-border-style: solid;
+    -fx-border-width: 0 1 1 1;
+}
+
+#calendar .currentDay, #calendar .holiday .currentDay {
+    -fx-text-fill: #ff0000;
+    -fx-font-weight: bold;
+}
+
+/***** planning *****/
+#planning .label {
+    -fx-alignment: center;
+}
+
+#planning .month {
+    -fx-border-color: #b9b9b9;
+    -fx-border-style: solid;
+    -fx-border-width: 1 1 0 0;
+}
+
+#planning .week {
+    -fx-border-color: #b9b9b9;
+    -fx-border-style: solid;
+    -fx-border-width: 0 1 0 0;
+}
+
+#planning .cell, #planning .day {
+    -fx-border-color: #b9b9b9;
+    -fx-border-style: solid;
+    -fx-border-width: 0 1 1 0;
+}
+
+#planning .username {
+    -fx-border-color: #b9b9b9;
+    -fx-border-style: solid;
+    -fx-border-width: 0 1 1 1;
+}
+
+#planning .week .label, #planning .username .label {
+    -fx-alignment: center-left;
+}
+
+#planning .month {
+    -fx-font-weight: bold;
+}
+
+#planning .week .label {
+    -fx-padding: 0 0 0 5;
+    -fx-text-fill: #b9b9b9;
+    -fx-font-size: 10;
+}
+
+#planning .currentDay, #planning .holiday .currentDay {
+    -fx-text-fill: #ff0000;
+    -fx-font-weight: bold;
 }
 
 /***** unclassified *****/
 .separatorSectionTitle {
     -fx-border-color: black;
-}
-
-#calendar, #calendar * {
-    -fx-alignment: center;
 }
 
 .navOption {
@@ -148,7 +241,7 @@
 }
 
 .selected_option {
-    -fx-background-color: #3f5060;
+    -fx-background-color: #6e7cad;
 }
 
 

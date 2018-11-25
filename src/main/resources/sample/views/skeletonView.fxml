@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -15,21 +16,24 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.SkeletonController">
    <children>
       <GridPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="200" percentWidth="30" />
-          <ColumnConstraints hgrow="SOMETIMES" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="50" percentHeight="10" vgrow="SOMETIMES" />
-          <RowConstraints vgrow="SOMETIMES" />
-        </rowConstraints>
+         <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" maxWidth="175" minWidth="175" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="30" minHeight="50.0" vgrow="NEVER" />
+            <RowConstraints vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <Pane fx:id="logoIcon" />
-            <HBox fx:id="menuBanner" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <HBox fx:id="menuBanner" alignment="CENTER_RIGHT" prefHeight="58.0" prefWidth="421.0" GridPane.columnIndex="1">
                <children>
                   <HBox fx:id="menuOption1" alignment="CENTER" styleClass="menuOption">
                      <children>
-                        <Pane fx:id="directoryIcon" prefHeight="50.0" prefWidth="50.0" styleClass="menuIcons" />
+                        <Pane fx:id="directoryIcon" prefHeight="50.0" prefWidth="50.0" styleClass="menuIcons">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Pane>
                         <Label text="Directory" />
                      </children>
                      <HBox.margin>
@@ -44,24 +48,35 @@
                   <HBox fx:id="menuOption2" alignment="CENTER" styleClass="menuOption">
                      <children>
                         <Label fx:id="usernameLbl" text="Username" />
-                        <Pane fx:id="userIcon" prefHeight="50.0" prefWidth="50.0" styleClass="menuIcons" />
+                        <Pane fx:id="userIcon" prefHeight="100.0" prefWidth="100.0" styleClass="menuIcons">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Pane>
                      </children>
                      <HBox.margin>
-                         <Insets left="5.0" />
+                        <Insets left="5.0" />
                      </HBox.margin>
                   </HBox>
                </children>
                <padding>
                   <Insets bottom="5.0" top="5.0" />
-               </padding></HBox>
-            <VBox fx:id="navBanner" GridPane.rowIndex="1">
+               </padding>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin></HBox>
+            <VBox fx:id="navBanner" GridPane.rowSpan="2">
                <children>
+                  <Pane fx:id="logoIcon" prefHeight="50.0" />
                   <HBox fx:id="navOption1" alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="0.0" styleClass="navOption">
                      <children>
                         <Pane fx:id="dayoffRequestsIcon" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" prefHeight="50.0" prefWidth="50.0" styleClass="navIcons">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
+                           <effect>
+                              <Lighting bumpInput="$null" diffuseConstant="0.0" light="$null" specularConstant="2.0" specularExponent="0.0" surfaceScale="10.0" />
+                           </effect>
                         </Pane>
                         <Label text="Demandes de congés" wrapText="true" />
                      </children>
@@ -75,6 +90,9 @@
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
+                           <effect>
+                              <Lighting bumpInput="$null" diffuseConstant="0.0" light="$null" specularConstant="2.0" specularExponent="0.0" surfaceScale="10.0" />
+                           </effect>
                         </Pane>
                         <Label text="Consulter le planning" wrapText="true">
                            <HBox.margin>
@@ -91,6 +109,9 @@
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
+                           <effect>
+                              <Lighting bumpInput="$null" diffuseConstant="0.0" light="$null" specularConstant="2.0" specularExponent="0.0" surfaceScale="10.0" />
+                           </effect>
                         </Pane>
                         <Label text="Valider" wrapText="true" />
                      </children>
@@ -104,6 +125,9 @@
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
+                           <effect>
+                              <Lighting bumpInput="$null" diffuseConstant="0.0" light="$null" specularConstant="2.0" specularExponent="0.0" surfaceScale="10.0" />
+                           </effect>
                         </Pane>
                         <Label text="Rapports" wrapText="true" />
                      </children>
@@ -117,6 +141,9 @@
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
+                           <effect>
+                              <Lighting bumpInput="$null" diffuseConstant="0.0" light="$null" specularConstant="2.0" specularExponent="0.0" surfaceScale="10.0" />
+                           </effect>
                         </Pane>
                         <Label text="Paramètres" wrapText="true" />
                      </children>
@@ -147,7 +174,7 @@
       </GridPane>
    </children>
    <stylesheets>
-      <URL value="@../../sample/css/dayoffCalendarView.css" />
-      <URL value="@../../sample/css/global.css" />
+      <URL value="@../css/dayoffCalendarView.css" />
+      <URL value="@../css/global.css" />
    </stylesheets>
 </AnchorPane>

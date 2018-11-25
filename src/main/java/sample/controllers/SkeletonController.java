@@ -7,6 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import sample.database.Model.User;
+import sample.utils.UserSessionManager;
 import sample.utils.ViewsEnum;
 
 import java.io.IOException;
@@ -16,20 +18,52 @@ import java.util.ResourceBundle;
 
 public class SkeletonController implements Initializable {
     @FXML private HBox navOption1, navOption2, navOption3, navOption4, navOption5, menuOption1, menuOption2;
-    @FXML private Label sectionTitleLbl;
+    @FXML private Label sectionTitleLbl, usernameLbl;
     @FXML private VBox body, navBanner;
+
 
     private HashMap<ViewsEnum, String> fxmlList;
     private int selectedMenuOption;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        User currentUser = UserSessionManager.getInstance().getCurrentUser();
+        usernameLbl.setText(currentUser.getFirstname() + " " + currentUser.getLastname());
+
         fxmlList = new HashMap<>();
         fxmlList.put(ViewsEnum.DAYOFF_REQUESTS, "dayoffRequestsView");
         fxmlList.put(ViewsEnum.PLANNING, "planningView");
         fxmlList.put(ViewsEnum.REPORT, "reportsView");
         fxmlList.put(ViewsEnum.SETTINGS, "settingsView");
         fxmlList.put(ViewsEnum.VALIDATE, "validateView");
+
+        navOption1.setVisible(false);
+        navOption2.setVisible(false);
+        navOption3.setVisible(false);
+        navOption4.setVisible(false);
+        navOption5.setVisible(false);
+
+        switch (currentUser.getRole()) {
+            case employee:
+                menuEmployee();
+                break;
+            case teamLeader:
+                menuEmployee();
+                menuTeamLeader();
+                break;
+            case RHStaff:
+                menuEmployee();
+                menuTeamLeader();
+                menuRHStaff();
+                break;
+            case RHSupervisor:
+                menuEmployee();
+                menuTeamLeader();
+                menuRHStaff();
+                menuRHSupervisor();
+                break;
+        }
 
         // Set default options
         selectedMenuOption = 0;
@@ -93,5 +127,22 @@ public class SkeletonController implements Initializable {
         }
         // Add new node
         body.getChildren().add(root);
+    }
+
+    private void menuEmployee() {
+        navOption1.setVisible(true);
+    }
+
+    private void menuTeamLeader() {
+        navOption2.setVisible(true);
+    }
+
+    private void menuRHStaff() {
+        navOption3.setVisible(true);
+        navOption4.setVisible(true);
+    }
+
+    private void menuRHSupervisor() {
+        navOption5.setVisible(true);
     }
 }

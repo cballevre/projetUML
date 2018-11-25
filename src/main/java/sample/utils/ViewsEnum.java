@@ -5,5 +5,6 @@ public enum ViewsEnum {
     PLANNING,
     REPORT,
     SETTINGS,
-    VALIDATE
+    VALIDATE,
+    LOGIN
 }
