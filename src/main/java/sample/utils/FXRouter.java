@@ -20,7 +20,7 @@ import java.util.HashMap;
  * @version 1.0.0
  */
 public final class FXRouter {
-    private static final String WINDOW_TITLE = "Staff Management";
+    private static final String WINDOW_TITLE = "";
     private static final Double WINDOW_WIDTH = 800.0;
     private static final Double WINDOW_HEIGHT = 600.0;
     private static final Double FADE_ANIMATION_DURATION = 800.0;
