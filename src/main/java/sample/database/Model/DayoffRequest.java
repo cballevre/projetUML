@@ -1,5 +1,6 @@
 package sample.database.Model;
 
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -8,14 +9,14 @@ import java.util.*;
 public class DayoffRequest {
 
     private DayoffType type;
-    private Date dayStart;
-    private Date dayEnd;
+    private LocalDate dayStart;
+    private LocalDate dayEnd;
     private float duration;
     private String reason;
     private String comment;
     private DayoffRequestState state;
 
-    public DayoffRequest(DayoffType type, Date dayStart, Date dayEnd, float duration, String reason, String comment, DayoffRequestState state) {
+    public DayoffRequest(DayoffType type, LocalDate dayStart, LocalDate dayEnd, float duration, String reason, String comment, DayoffRequestState state) {
         this.type = type;
         this.dayStart = dayStart;
         this.dayEnd = dayEnd;
@@ -33,19 +34,19 @@ public class DayoffRequest {
         this.type = type;
     }
 
-    public Date getDayStart() {
+    public LocalDate getDayStart() {
         return dayStart;
     }
 
-    public void setDayStart(Date dayStart) {
+    public void setDayStart(LocalDate dayStart) {
         this.dayStart = dayStart;
     }
 
-    public Date getDayEnd() {
+    public LocalDate getDayEnd() {
         return dayEnd;
     }
 
-    public void setDayEnd(Date dayEnd) {
+    public void setDayEnd(LocalDate dayEnd) {
         this.dayEnd = dayEnd;
     }
 

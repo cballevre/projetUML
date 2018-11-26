@@ -1,5 +1,7 @@
 package sample.database.Model;
 
+import java.util.ArrayList;
+
 public class User {
 
     /**
@@ -13,8 +15,9 @@ public class User {
     private String service;
     private Role role;
     private float holidayBalance;
+    private ArrayList<DayoffRequest> dayoffs;
 
-    public User(String firstname, String lastname, String email, String password, String service, Role role, float holidayBalance) {
+    public User(String firstname, String lastname, String email, String password, String service, Role role, float holidayBalance, ArrayList<DayoffRequest> dayoffs) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -22,6 +25,7 @@ public class User {
         this.service = service;
         this.role = role;
         this.holidayBalance = holidayBalance;
+        this.dayoffs = dayoffs;
     }
 
     public String getFirstname() {
@@ -78,5 +82,13 @@ public class User {
 
     public void setHolidayBalance(float holidayBalance) {
         this.holidayBalance = holidayBalance;
+    }
+
+    public ArrayList<DayoffRequest> getDayoffs() {
+        return dayoffs;
+    }
+
+    public void setDayoffs(ArrayList<DayoffRequest> dayoffs) {
+        this.dayoffs = dayoffs;
     }
 }
