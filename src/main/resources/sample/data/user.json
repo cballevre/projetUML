@@ -7,24 +7,23 @@
     "service" : "Informatique",
     "role" : "RHSupervisor",
     "holidayBalance" : 3.5,
-    "dayoff_requests" : [
+    "dayoffRequests" : [
       {
-        "type" : "",
-        "day_start" : "",
-        "day_end" : "",
-        "count_days" : "",
-        "reason" : "",
-        "comment" : "",
-        "state" : ""
-      },
-      {
-        "type" : "",
-        "day_start" : "",
-        "day_end" : "",
-        "count_days" : "",
-        "reason" : "",
-        "comment" : "",
-        "state" : ""
+        "type" : "familiale",
+        "dayStart" : {
+          "year": 1997,
+          "month": 11,
+          "day": 25
+        },
+        "dayEnd" : {
+          "year": 1997,
+          "month": 11,
+          "day": 26
+        },
+        "duration" : 2.5,
+        "reason" : "Enfants malade",
+        "comment" : "test",
+        "state" : "awaiting"
       }
     ]
   },
@@ -36,25 +35,7 @@
     "service" : "Informatique",
     "role" : "employee",
     "holidayBalance" : 6.5,
-    "dayoff_requests" : [
-      {
-        "type" : "",
-        "day_start" : "",
-        "day_end" : "",
-        "count_days" : "",
-        "reason" : "",
-        "comment" : "",
-        "state" : ""
-      },
-      {
-        "type" : "",
-        "day_start" : "",
-        "day_end" : "",
-        "count_days" : "",
-        "reason" : "",
-        "comment" : "",
-        "state" : ""
-      }
+    "dayoffRequests" : [
     ]
   }
 

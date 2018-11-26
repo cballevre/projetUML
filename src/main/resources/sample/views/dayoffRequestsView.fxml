@@ -15,34 +15,34 @@
 <?import javafx.scene.layout.HBox?>
 <VBox xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.DayoffRequestsController">
     <children>
-       <VBox style="-fx-background-color: #fffff">
-          <children>
-             <HBox>
-                <children>
-                   <AnchorPane>
-                      <children>
-                         <Label id="beginDateLabel" layoutX="14.0" layoutY="36.0" text="Date de début" />
-                         <DatePicker fx:id="beginDateField" layoutX="14.0" layoutY="61.0" prefHeight="26.0" prefWidth="149.0" />
-                         <ChoiceBox fx:id="beginDayMoment" layoutX="171.0" layoutY="61.0" prefWidth="100.0" />
-                      </children>
-                   </AnchorPane>
-                </children>
+        <VBox style="-fx-background-color: #fffff">
+            <children>
+                <HBox>
+                    <children>
+                        <AnchorPane>
+                            <children>
+                                <Label id="beginDateLabel" layoutX="14.0" layoutY="36.0" text="Date de début" />
+                                <DatePicker fx:id="beginDateField" layoutX="14.0" layoutY="61.0" prefHeight="26.0" prefWidth="149.0" />
+                                <ChoiceBox fx:id="beginDayMoment" layoutX="171.0" layoutY="61.0" prefWidth="100.0" />
+                            </children>
+                        </AnchorPane>
+                    </children>
+                    <AnchorPane>
+                        <children>
+                            <Label id="endDateLabel" layoutX="14.0" layoutY="34.0" text="Date de fin" />
+                            <DatePicker fx:id="endDateField" layoutX="14.0" layoutY="61.0" prefHeight="26.0" prefWidth="146.0" />
+                            <ChoiceBox fx:id="endDayMoment" layoutX="171.0" layoutY="61.0" prefHeight="26.0" prefWidth="100.0" />
+                        </children>
+                    </AnchorPane>
+                </HBox>
                 <AnchorPane>
-                   <children>
-                      <Label id="endDateLabel" layoutX="14.0" layoutY="34.0" text="Date de fin" />
-                      <DatePicker fx:id="endDateField" layoutX="14.0" layoutY="61.0" prefHeight="26.0" prefWidth="146.0" />
-                      <ChoiceBox fx:id="endDayMoment" layoutX="171.0" layoutY="61.0" prefHeight="26.0" prefWidth="100.0" />
-                   </children>
+                    <children>
+                        <Label id="typeLabel" layoutX="14.0" layoutY="111.0" text="Type de congés" />
+                        <ChoiceBox fx:id="typeField" layoutX="135.0" layoutY="106.0" prefWidth="150.0" />
+                    </children>
                 </AnchorPane>
-             </HBox>
-             <AnchorPane>
-                <children>
-                   <Label id="typeLabel" layoutX="14.0" layoutY="111.0" text="Type de congés" />
-                   <ChoiceBox fx:id="typeField" layoutX="135.0" layoutY="106.0" prefWidth="150.0" />
-                </children>
-             </AnchorPane>
-             <Button fx:id="submitButton" mnemonicParsing="false" text="Demander" />
-          </children>
-       </VBox>
+                <Button fx:id="submitButton" mnemonicParsing="false" text="Demander" />
+            </children>
+        </VBox>
     </children>
 </VBox>
