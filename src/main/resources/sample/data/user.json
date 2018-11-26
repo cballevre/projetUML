@@ -1,5 +1,34 @@
 [
   {
+    "firstname" : "Antoine",
+    "lastname" : "Ballèvre",
+    "email" : "antoine.ballevre@gmail.com",
+    "password" : "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3",
+    "service" : "ZService",
+    "role" : "RHSupervisor",
+    "holidayBalance" : 4,
+    "dayoff_requests" : [
+      {
+        "type" : "",
+        "day_start" : "",
+        "day_end" : "",
+        "count_days" : "",
+        "reason" : "",
+        "comment" : "",
+        "state" : ""
+      },
+      {
+        "type" : "",
+        "day_start" : "",
+        "day_end" : "",
+        "count_days" : "",
+        "reason" : "",
+        "comment" : "",
+        "state" : ""
+      }
+    ]
+  },
+  {
     "firstname" : "Célestin",
     "lastname" : "Ballèvre",
     "email" : "celestin.ballevre@gmail.com",
@@ -29,6 +58,35 @@
     ]
   },
   {
+    "firstname" : "Kévin",
+    "lastname" : "Salaün",
+    "email" : "kevin.salaun@gmail.com",
+    "password" : "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3",
+    "service" : "Marketing",
+    "role" : "employee",
+    "holidayBalance" : 8,
+    "dayoff_requests" : [
+      {
+        "type" : "",
+        "day_start" : "",
+        "day_end" : "",
+        "count_days" : "",
+        "reason" : "",
+        "comment" : "",
+        "state" : ""
+      },
+      {
+        "type" : "",
+        "day_start" : "",
+        "day_end" : "",
+        "count_days" : "",
+        "reason" : "",
+        "comment" : "",
+        "state" : ""
+      }
+    ]
+  },
+  {
     "firstname" : "Simon",
     "lastname" : "Jourdan",
     "email" : "simon.jourdan@gmail.com",
@@ -36,6 +94,35 @@
     "service" : "Informatique",
     "role" : "employee",
     "holidayBalance" : 6.5,
+    "dayoff_requests" : [
+      {
+        "type" : "",
+        "day_start" : "",
+        "day_end" : "",
+        "count_days" : "",
+        "reason" : "",
+        "comment" : "",
+        "state" : ""
+      },
+      {
+        "type" : "",
+        "day_start" : "",
+        "day_end" : "",
+        "count_days" : "",
+        "reason" : "",
+        "comment" : "",
+        "state" : ""
+      }
+    ]
+  },
+  {
+    "firstname" : "Guillaume",
+    "lastname" : "Erhel",
+    "email" : "guillaume.erhel@gmail.com",
+    "password" : "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3",
+    "service" : "Marketing",
+    "role" : "employee",
+    "holidayBalance" : 7,
     "dayoff_requests" : [
       {
         "type" : "",

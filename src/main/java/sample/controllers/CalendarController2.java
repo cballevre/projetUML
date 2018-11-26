@@ -8,8 +8,11 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import sample.database.Model.DayoffRequest;
+import sample.database.Model.Role;
 import sample.database.Model.User;
+import sample.database.Repository.UserRepository;
 import sample.utils.TimesOfTheDayEnum;
+import sample.utils.UserSessionManager;
 
 import java.net.URL;
 import java.text.DateFormat;
@@ -51,23 +54,55 @@ public class CalendarController2 implements Initializable {
         users.put("Pierre Alain", dayoffsUser2);*/
 
 
+        UserRepository userRepository = UserRepository.getInstance();
+        UserSessionManager userSessionM = UserSessionManager.getInstance();
+        User currentUser = userSessionM.getCurrentUser();
+        ArrayList<User> users;
+        if(currentUser.getRole().equals(Role.teamLeader)) {
+            users = userRepository.findAll();
+        } else if(currentUser.getRole().equals(Role.RHStaff) || currentUser.getRole().equals(Role.RHSupervisor)) {
+            users = userRepository.findAll();
+        } else {
+            users = new ArrayList<>();
+        }
+
         LocalDate calendarDate = LocalDate.now();
-        reset(calendarDate);
+        reset(calendarDate, users);
     }
 
     public void reset(final LocalDate local) {
-        HashMap<String, User> users = new HashMap<>();
+        //HashMap<String, User> users = new HashMap<>();
+        ArrayList<User> users = new ArrayList<>();
         reset(local, users);
     }
 
-    public void reset(final LocalDate local, final HashMap<String, User> users) { //HashMap<username, HashMap<date, TimesOfTheDayEnum>>
+    public void reset(final LocalDate local, final ArrayList<User> users) { //HashMap<username, HashMap<date, TimesOfTheDayEnum>>
         System.out.println("### Début affichage planning ###");
         LocalDate currentDate = LocalDate.now();
         LocalDate lastDate = local.plusDays(columnCount-1);
         LocalDate browseTime = local;
         LocalDate previousDate = local.minusDays(1);
         int dayCount = (int) DAYS.between(browseTime, lastDate);
-        String[] usernames = users.keySet().toArray(new String[users.size()]);
+        Collections.sort(users, new Comparator<User>() {
+            @Override
+            public int compare(User u1, User u2) {
+                return u1.getService().compareTo(u2.getService());
+            }
+        });
+
+        // Counts of different professions
+        int professionCount = 0;
+        if(users.size() == 1) {
+            professionCount = 1;
+        } else if(users.size() > 1) {
+            professionCount = 1;
+            for(int i=1; i<users.size(); i++) {
+                if(!users.get(i-1).getService().equals(users.get(i).getService())) {
+                    professionCount++;
+                }
+            }
+        }
+
         // Generates the grid partitioning
         planning.getChildren().clear();
         planning.getRowConstraints().clear();
@@ -84,7 +119,7 @@ public class CalendarController2 implements Initializable {
             }
             planning.getColumnConstraints().add(constraints);
         }
-        for(int y=0; y<users.size()+3; y++) {
+        for(int y=0; y<users.size()+professionCount+3; y++) {
             RowConstraints constraints = new RowConstraints();
             constraints.setVgrow(Priority.NEVER);
             if(y == 1) {
@@ -131,17 +166,34 @@ public class CalendarController2 implements Initializable {
         planning.add(navigationBar, 0, 0, 1, 3);
 
         // Puts usernames
-        for(int i=0; i<usernames.length; i++) {
+        String previousProfession = "";
+        int lineIndex = 3;
+        for(int i=0; i<users.size(); i++) {
+            User userInfos = users.get(i);
+            if(previousProfession.equals("") || !previousProfession.equals(userInfos.getService())) {
+                AnchorPane headerPane = new AnchorPane();
+                Label headerLbl = new Label(userInfos.getService());
+                AnchorPane.setTopAnchor(headerLbl, 0.0);
+                AnchorPane.setRightAnchor(headerLbl, 0.0);
+                AnchorPane.setBottomAnchor(headerLbl, 0.0);
+                AnchorPane.setLeftAnchor(headerLbl, 0.0);
+                headerPane.getChildren().add(headerLbl);
+                headerPane.getStyleClass().add("profession");
+                planning.add(headerPane, 0, lineIndex, columnCount, 1);
+                previousProfession = userInfos.getService();
+                lineIndex++;
+            }
             AnchorPane usernamePane = new AnchorPane();
-            Label monthLbl = new Label(usernames[i]);
+            Label monthLbl = new Label(users.get(i).getFirstname()+" "+users.get(i).getLastname());
             AnchorPane.setTopAnchor(monthLbl, 0.0);
             AnchorPane.setRightAnchor(monthLbl, 0.0);
             AnchorPane.setBottomAnchor(monthLbl, 0.0);
             AnchorPane.setLeftAnchor(monthLbl, 0.0);
             usernamePane.getChildren().add(monthLbl);
             usernamePane.getStyleClass().add("username");
-            planning.add(usernamePane, 0, i+3, 1, 1);
-            System.out.println("username:"+usernames[i]+"   (x="+0+"; y="+(i+3)+")");
+            planning.add(usernamePane, 0, lineIndex, 1, 1);
+            System.out.println("username:"+users.get(i)+"   (x="+0+"; y="+lineIndex+")");
+            lineIndex++;
         }
         // For each day
         for(int x=1; x<dayCount+1; x++) {
@@ -207,8 +259,26 @@ public class CalendarController2 implements Initializable {
             planning.add(dayPane, x, 2, 1, 1);
             System.out.println("#day:"+browseTime.getDayOfMonth()+"   (x="+x+"; y="+2+")");
             // Browses user list
-            for(int y=0; y<usernames.length; y++) {
-                User userInfos = users.get(usernames[y]);
+            previousProfession = "";
+            lineIndex = 3;
+            for(int y=0; y<users.size(); y++) {
+                User userInfos = users.get(y);
+                // Adds profession header
+                if(previousProfession.equals("") || !previousProfession.equals(userInfos.getService())) {
+                    /*if(x==1) {
+                        AnchorPane headerPane = new AnchorPane();
+                        Label headerLbl = new Label(userInfos.getService());
+                        AnchorPane.setTopAnchor(headerLbl, 0.0);
+                        AnchorPane.setRightAnchor(headerLbl, 0.0);
+                        AnchorPane.setBottomAnchor(headerLbl, 0.0);
+                        AnchorPane.setLeftAnchor(headerLbl, 0.0);
+                        headerPane.getChildren().add(headerLbl);
+                        planning.add(headerPane, x, lineIndex, columnCount - 1, 1);
+                    }*/
+                    previousProfession = userInfos.getService();
+                    lineIndex++;
+                }
+                // Treatment of user infos
                 AnchorPane userDayPane = new AnchorPane();
                 AnchorPane.setTopAnchor(dayLbl, 0.0);
                 AnchorPane.setRightAnchor(dayLbl, 0.0);
@@ -221,31 +291,36 @@ public class CalendarController2 implements Initializable {
                     userDayPane.getStyleClass().add("workday");
                 }
                 // Checks if for this user, the day is a dayoff
-                for(DayoffRequest dayoffRequest : userInfos.getDayoffs()) {
-                    DateFormat df = new SimpleDateFormat("H");
-                    if(sameDay(browseTime, dayoffRequest.getDayStart())) {
-                        int hourStart = Integer.parseInt(df.format(dayoffRequest.getDayStart()));
-                        int hourEnd = Integer.parseInt(df.format(dayoffRequest.getDayEnd()));
-                        if(hourStart >= 12) {
-                            setDayoff(userDayPane, TimesOfTheDayEnum.AFTERNOON);
-                        } else if(sameDay(dayoffRequest.getDayStart(), dayoffRequest.getDayEnd()) && hourEnd < 12) {
-                            setDayoff(userDayPane, TimesOfTheDayEnum.MORNING);
-                        } else {
-                            setDayoff(userDayPane, TimesOfTheDayEnum.ALL_DAY_LONG);
+                if(userInfos.getDayoffs() != null) {
+                    if(userInfos.getDayoffs().size() != 0) {
+                        for(DayoffRequest dayoffRequest : userInfos.getDayoffs()) {
+                            DateFormat df = new SimpleDateFormat("H");
+                            if(sameDay(browseTime, dayoffRequest.getDayStart())) {
+                                int hourStart = Integer.parseInt(df.format(dayoffRequest.getDayStart()));
+                                int hourEnd = Integer.parseInt(df.format(dayoffRequest.getDayEnd()));
+                                if(hourStart >= 12) {
+                                    setDayoff(userDayPane, TimesOfTheDayEnum.AFTERNOON);
+                                } else if(sameDay(dayoffRequest.getDayStart(), dayoffRequest.getDayEnd()) && hourEnd < 12) {
+                                    setDayoff(userDayPane, TimesOfTheDayEnum.MORNING);
+                                } else {
+                                    setDayoff(userDayPane, TimesOfTheDayEnum.ALL_DAY_LONG);
+                                }
+                            } else if(sameDay(browseTime, dayoffRequest.getDayEnd())) {
+                                int hourEnd = Integer.parseInt(df.format(dayoffRequest.getDayEnd()));
+                                if(hourEnd >= 12) {
+                                    setDayoff(userDayPane, TimesOfTheDayEnum.ALL_DAY_LONG);
+                                } else {
+                                    setDayoff(userDayPane, TimesOfTheDayEnum.MORNING);
+                                }
+                            } else if(browseTime.isAfter(dayoffRequest.getDayStart()) && browseTime.isBefore(dayoffRequest.getDayEnd())) {
+                                setDayoff(userDayPane, TimesOfTheDayEnum.ALL_DAY_LONG);
+                            }
                         }
-                    } else if(sameDay(browseTime, dayoffRequest.getDayEnd())) {
-                        int hourEnd = Integer.parseInt(df.format(dayoffRequest.getDayEnd()));
-                        if(hourEnd >= 12) {
-                            setDayoff(userDayPane, TimesOfTheDayEnum.ALL_DAY_LONG);
-                        } else {
-                            setDayoff(userDayPane, TimesOfTheDayEnum.MORNING);
-                        }
-                    } else if(browseTime.isAfter(dayoffRequest.getDayStart()) && browseTime.isBefore(dayoffRequest.getDayEnd())) {
-                        setDayoff(userDayPane, TimesOfTheDayEnum.ALL_DAY_LONG);
                     }
                 }
-                planning.add(userDayPane, x, y+3, 1, 1);
-                System.out.println("day   (x="+x+"; y="+(y+3)+")");
+                planning.add(userDayPane, x, lineIndex, 1, 1);
+                System.out.println("day   (x="+x+"; y="+lineIndex+")");
+                lineIndex++;
             }
             browseTime = browseTime.plusDays(1);
             previousDate = previousDate.plusDays(1);

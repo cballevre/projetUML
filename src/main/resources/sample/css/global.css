@@ -166,8 +166,10 @@
 }
 
 /***** planning *****/
-#planning .label {
-    -fx-alignment: center;
+#planning .profession {
+    -fx-border-color: #b9b9b9;
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 1 0;
 }
 
 #planning .month {
@@ -194,8 +196,17 @@
     -fx-border-width: 0 1 1 1;
 }
 
-#planning .week .label, #planning .username .label {
+#planning .label {
+    -fx-alignment: center;
+}
+
+#planning .week .label, #planning .username .label, #planning .profession .label {
     -fx-alignment: center-left;
+    -fx-padding: 0 0 0 5;
+}
+
+#planning .profession .label {
+    -fx-font-weight: bold;
 }
 
 #planning .month {
@@ -203,7 +214,6 @@
 }
 
 #planning .week .label {
-    -fx-padding: 0 0 0 5;
     -fx-text-fill: #b9b9b9;
     -fx-font-size: 10;
 }
