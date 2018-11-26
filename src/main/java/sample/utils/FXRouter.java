@@ -214,7 +214,7 @@ public final class FXRouter {
         // set new route scene
         window.setScene(new Scene(resource, route.sceneWidth, route.sceneHeight));
 
-        window.setMaximized(true);
+        //window.setMaximized(true);
         // show the window
         window.show();
 
@@ -271,4 +271,5 @@ public final class FXRouter {
         return currentRoute.data;
     }
 
+    public static void setMaximized(boolean state) { window.setMaximized(state); }
 }

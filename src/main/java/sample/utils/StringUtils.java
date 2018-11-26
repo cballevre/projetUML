@@ -10,4 +10,5 @@ public class StringUtils {
         return chaine.substring(0, 1).toLowerCase() + chaine.substring(1);
     }
 
+    public static String firstChar(String chaine) { return chaine.substring(0, 1); }
 }

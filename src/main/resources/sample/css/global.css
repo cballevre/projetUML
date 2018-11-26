@@ -82,7 +82,7 @@
 }
 
 #userIcon {
-    -fx-background-image: url('../img/woman_icon.png');
+    /*-fx-background-image: url('../img/woman_icon.png');*/
     -fx-background-size: 16;
     -fx-background-color: #d6dd88;
     -fx-background-radius: 100%;
@@ -92,6 +92,10 @@
     -fx-min-height: -fx-height;
     -fx-max-width: -fx-width;
     -fx-max-height: -fx-height;
+}
+
+#initialLbl {
+    -fx-alignment: center;
 }
 
 #logoIcon {

@@ -3,10 +3,13 @@ package sample.controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import sample.database.Model.User;
+import sample.utils.FXRouter;
+import sample.utils.StringUtils;
 import sample.utils.UserSessionManager;
 import sample.utils.ViewsEnum;
 
@@ -17,7 +20,7 @@ import java.util.ResourceBundle;
 
 public class SkeletonController implements Initializable {
     @FXML private HBox navOption1, navOption2, navOption3, navOption4, navOption5, menuOption1, menuOption2;
-    @FXML private Label sectionTitleLbl, usernameLbl;
+    @FXML private Label sectionTitleLbl, usernameLbl, initialLbl;
     @FXML private VBox body, navBanner;
 
     private HashMap<ViewsEnum, String> fxmlList;
@@ -25,9 +28,11 @@ public class SkeletonController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        FXRouter.setMaximized(true);
 
         User currentUser = UserSessionManager.getInstance().getCurrentUser();
         usernameLbl.setText(currentUser.getFirstname() + " " + currentUser.getLastname());
+        initialLbl.setText(StringUtils.firstChar(currentUser.getFirstname()).toUpperCase()+StringUtils.firstChar(currentUser.getLastname()).toUpperCase());
 
         fxmlList = new HashMap<>();
         fxmlList.put(ViewsEnum.DAYOFF_REQUESTS, "dayoffRequestsView");

@@ -52,6 +52,9 @@
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
+                           <children>
+                              <Label fx:id="initialLbl" contentDisplay="CENTER" ellipsisString="" prefHeight="25.0" prefWidth="25.0" text="AB" textAlignment="CENTER" />
+                           </children>
                         </Pane>
                      </children>
                      <HBox.margin>
