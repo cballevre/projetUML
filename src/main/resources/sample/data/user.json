@@ -63,26 +63,7 @@
     "service" : "Marketing",
     "role" : "employee",
     "holidayBalance" : 8,
-    "dayoff_requests" : [
-      {
-        "type" : "",
-        "day_start" : "",
-        "day_end" : "",
-        "count_days" : "",
-        "reason" : "",
-        "comment" : "",
-        "state" : ""
-      },
-      {
-        "type" : "",
-        "day_start" : "",
-        "day_end" : "",
-        "count_days" : "",
-        "reason" : "",
-        "comment" : "",
-        "state" : ""
-      }
-    ]
+    "dayoffRequests" : []
   },
   {
     "firstname" : "Simon",
@@ -92,26 +73,7 @@
     "service" : "Informatique",
     "role" : "employee",
     "holidayBalance" : 6.5,
-    "dayoff_requests" : [
-      {
-        "type" : "",
-        "day_start" : "",
-        "day_end" : "",
-        "count_days" : "",
-        "reason" : "",
-        "comment" : "",
-        "state" : ""
-      },
-      {
-        "type" : "",
-        "day_start" : "",
-        "day_end" : "",
-        "count_days" : "",
-        "reason" : "",
-        "comment" : "",
-        "state" : ""
-      }
-    ]
+    "dayoffRequests" : []
   },
   {
     "firstname" : "Guillaume",
@@ -121,26 +83,7 @@
     "service" : "Marketing",
     "role" : "employee",
     "holidayBalance" : 7,
-    "dayoff_requests" : [
-      {
-        "type" : "",
-        "day_start" : "",
-        "day_end" : "",
-        "count_days" : "",
-        "reason" : "",
-        "comment" : "",
-        "state" : ""
-      },
-      {
-        "type" : "",
-        "day_start" : "",
-        "day_end" : "",
-        "count_days" : "",
-        "reason" : "",
-        "comment" : "",
-        "state" : ""
-      }
-    ]
+    "dayoffRequests" : []
   }
 
 ]
