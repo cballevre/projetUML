@@ -34,7 +34,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Pane>
-                        <Label text="Directory" />
+                        <Label text="Annuaire" />
                      </children>
                      <HBox.margin>
                         <Insets right="5.0" />

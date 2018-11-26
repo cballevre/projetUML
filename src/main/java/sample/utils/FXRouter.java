@@ -210,8 +210,11 @@ public final class FXRouter {
         // set window title from route settings or default setting
         window.setTitle(route.windowTitle);
 
+
         // set new route scene
         window.setScene(new Scene(resource, route.sceneWidth, route.sceneHeight));
+
+        window.setMaximized(true);
         // show the window
         window.show();
 
