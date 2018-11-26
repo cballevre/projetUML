@@ -29,7 +29,7 @@ abstract class Repository<E> {
 
         this.entity = tClass;
         this.entityName = entity.getSimpleName();
-        this.entityStorage = "sample/data/"  + this.entityName + ".json";
+        this.entityStorage = "sample/data/"  + StringUtils.lcfirst(this.entityName) + ".json";
         //this.entityPrimaryKey = $this->findPrimaryKey();
 
         //Get file from resources folder
@@ -39,8 +39,7 @@ abstract class Repository<E> {
             file = new FileReader(classLoader.getResource(entityStorage).getFile());
 
         } catch (FileNotFoundException e) {
-            throw new RuntimeException("Echec lors de l\'ouverture du fichier" + this.entityName
-                    + ".json !!");
+            throw new RuntimeException("Echec lors de l\'ouverture du fichier" + this.entityName + ".json !!");
         }
 
         JsonReader reader = new JsonReader(file);
