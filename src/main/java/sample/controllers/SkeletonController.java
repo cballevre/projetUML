@@ -5,8 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import sample.database.Model.User;
 import sample.utils.UserSessionManager;
 import sample.utils.ViewsEnum;
@@ -20,7 +19,6 @@ public class SkeletonController implements Initializable {
     @FXML private HBox navOption1, navOption2, navOption3, navOption4, navOption5, menuOption1, menuOption2;
     @FXML private Label sectionTitleLbl, usernameLbl;
     @FXML private VBox body, navBanner;
-
 
     private HashMap<ViewsEnum, String> fxmlList;
     private int selectedMenuOption;
@@ -116,8 +114,7 @@ public class SkeletonController implements Initializable {
         Node tmp[] = new Node[2];
         tmp[0] = body.getChildren().get(0);
         tmp[1] = body.getChildren().get(1);
-        body.getChildren().clear();
-        body.getChildren().addAll(tmp[0], tmp[1]);
+        body.getChildren().setAll(tmp[0], tmp[1]);
         // Load new content
         FXMLLoader fxmlLoader = new FXMLLoader();
         Node root = null;

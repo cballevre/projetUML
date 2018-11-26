@@ -7,9 +7,13 @@ import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import sample.database.Model.DayoffRequest;
+import sample.database.Model.User;
 import sample.utils.TimesOfTheDayEnum;
 
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
@@ -28,9 +32,9 @@ public class CalendarController2 implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        LocalDate tmp = LocalDate.now().plusDays(3);
-        HashMap<String, HashMap<LocalDate, TimesOfTheDayEnum>> users = new HashMap<>();
-        HashMap<LocalDate, TimesOfTheDayEnum> dayoffsUser1 = new HashMap<>();
+        /*LocalDate tmp = LocalDate.now().plusDays(3);
+        HashMap<String, User> users = new HashMap<>();
+        User dayoffsUser1 = new HashMap<>();
         dayoffsUser1.put(tmp, TimesOfTheDayEnum.AFTERNOON);
         tmp = tmp.plusDays(1);
         dayoffsUser1.put(tmp, TimesOfTheDayEnum.ALL_DAY_LONG);
@@ -39,24 +43,24 @@ public class CalendarController2 implements Initializable {
         tmp = tmp.plusDays(1);
         dayoffsUser1.put(tmp, TimesOfTheDayEnum.MORNING);
         users.put("Daniel Rocacher", dayoffsUser1);
-        HashMap<LocalDate, TimesOfTheDayEnum> dayoffsUser2 = new HashMap<>();
+        User dayoffsUser2 = new HashMap<>();
         tmp = tmp.plusDays(6);
         dayoffsUser2.put(tmp, TimesOfTheDayEnum.ALL_DAY_LONG);
         tmp = tmp.plusDays(1);
         dayoffsUser2.put(tmp, TimesOfTheDayEnum.ALL_DAY_LONG);
-        users.put("Pierre Alain", dayoffsUser2);
+        users.put("Pierre Alain", dayoffsUser2);*/
 
 
         LocalDate calendarDate = LocalDate.now();
-        reset(calendarDate, users);
+        reset(calendarDate);
     }
 
     public void reset(final LocalDate local) {
-        HashMap<String, HashMap<LocalDate, TimesOfTheDayEnum>> users = new HashMap<>();
+        HashMap<String, User> users = new HashMap<>();
         reset(local, users);
     }
 
-    public void reset(final LocalDate local, final HashMap<String, HashMap<LocalDate, TimesOfTheDayEnum>> users) { //HashMap<username, HashMap<date, TimesOfTheDayEnum>>
+    public void reset(final LocalDate local, final HashMap<String, User> users) { //HashMap<username, HashMap<date, TimesOfTheDayEnum>>
         System.out.println("### Début affichage planning ###");
         LocalDate currentDate = LocalDate.now();
         LocalDate lastDate = local.plusDays(columnCount-1);
@@ -204,7 +208,7 @@ public class CalendarController2 implements Initializable {
             System.out.println("#day:"+browseTime.getDayOfMonth()+"   (x="+x+"; y="+2+")");
             // Browses user list
             for(int y=0; y<usernames.length; y++) {
-                HashMap<LocalDate, TimesOfTheDayEnum> userInfos = users.get(usernames[y]);
+                User userInfos = users.get(usernames[y]);
                 AnchorPane userDayPane = new AnchorPane();
                 AnchorPane.setTopAnchor(dayLbl, 0.0);
                 AnchorPane.setRightAnchor(dayLbl, 0.0);
@@ -217,10 +221,27 @@ public class CalendarController2 implements Initializable {
                     userDayPane.getStyleClass().add("workday");
                 }
                 // Checks if for this user, the day is a dayoff
-                for(Map.Entry<LocalDate, TimesOfTheDayEnum> entry : userInfos.entrySet()) {
-                    if(browseTime.getYear()==entry.getKey().getYear() && browseTime.getMonth().getValue()==entry.getKey().getMonth().getValue() &&browseTime.getDayOfMonth()==entry.getKey().getDayOfMonth()) {
-                        setDayoff(userDayPane, entry.getValue());
-                        break;
+                for(DayoffRequest dayoffRequest : userInfos.getDayoffs()) {
+                    DateFormat df = new SimpleDateFormat("H");
+                    if(sameDay(browseTime, dayoffRequest.getDayStart())) {
+                        int hourStart = Integer.parseInt(df.format(dayoffRequest.getDayStart()));
+                        int hourEnd = Integer.parseInt(df.format(dayoffRequest.getDayEnd()));
+                        if(hourStart >= 12) {
+                            setDayoff(userDayPane, TimesOfTheDayEnum.AFTERNOON);
+                        } else if(sameDay(dayoffRequest.getDayStart(), dayoffRequest.getDayEnd()) && hourEnd < 12) {
+                            setDayoff(userDayPane, TimesOfTheDayEnum.MORNING);
+                        } else {
+                            setDayoff(userDayPane, TimesOfTheDayEnum.ALL_DAY_LONG);
+                        }
+                    } else if(sameDay(browseTime, dayoffRequest.getDayEnd())) {
+                        int hourEnd = Integer.parseInt(df.format(dayoffRequest.getDayEnd()));
+                        if(hourEnd >= 12) {
+                            setDayoff(userDayPane, TimesOfTheDayEnum.ALL_DAY_LONG);
+                        } else {
+                            setDayoff(userDayPane, TimesOfTheDayEnum.MORNING);
+                        }
+                    } else if(browseTime.isAfter(dayoffRequest.getDayStart()) && browseTime.isBefore(dayoffRequest.getDayEnd())) {
+                        setDayoff(userDayPane, TimesOfTheDayEnum.ALL_DAY_LONG);
                     }
                 }
                 planning.add(userDayPane, x, y+3, 1, 1);
@@ -250,5 +271,9 @@ public class CalendarController2 implements Initializable {
                     break;
             }
         }
+    }
+
+    public boolean sameDay(LocalDate A, LocalDate B) {
+        return (A.getYear()==B.getYear() && A.getMonth().getValue()==B.getMonth().getValue() && A.getDayOfMonth()==B.getDayOfMonth());
     }
 }
