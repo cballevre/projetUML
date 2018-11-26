@@ -221,7 +221,7 @@ public class CalendarController2 implements Initializable {
                     userDayPane.getStyleClass().add("workday");
                 }
                 // Checks if for this user, the day is a dayoff
-                for(DayoffRequest dayoffRequest : userInfos.getDayoffs()) {
+                for(DayoffRequest dayoffRequest : userInfos.getDayoffRequests()) {
                     DateFormat df = new SimpleDateFormat("H");
                     if(sameDay(browseTime, dayoffRequest.getDayStart())) {
                         int hourStart = Integer.parseInt(df.format(dayoffRequest.getDayStart()));
