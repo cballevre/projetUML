@@ -15,9 +15,9 @@ public class User {
     private String service;
     private Role role;
     private float holidayBalance;
-    private ArrayList<DayoffRequest> dayoffs;
+    private ArrayList<DayoffRequest> dayoffRequests;
 
-    public User(String firstname, String lastname, String email, String password, String service, Role role, float holidayBalance, ArrayList<DayoffRequest> dayoffs) {
+    public User(String firstname, String lastname, String email, String password, String service, Role role, float holidayBalance, ArrayList<DayoffRequest> dayoffRequests) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -25,7 +25,6 @@ public class User {
         this.service = service;
         this.role = role;
         this.holidayBalance = holidayBalance;
-        this.dayoffs = dayoffs;
     }
 
     public String getFirstname() {
@@ -84,11 +83,12 @@ public class User {
         this.holidayBalance = holidayBalance;
     }
 
-    public ArrayList<DayoffRequest> getDayoffs() {
-        return dayoffs;
+    public ArrayList<DayoffRequest> getDayoffRequests() {
+        return dayoffRequests;
     }
 
-    public void setDayoffs(ArrayList<DayoffRequest> dayoffs) {
-        this.dayoffs = dayoffs;
+    public void setDayoffRequests(ArrayList<DayoffRequest> dayoffRequests) {
+        this.dayoffRequests = dayoffRequests;
     }
+
 }
